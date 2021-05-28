@@ -23,7 +23,7 @@ def prediction():
   # make predictions
   predictions = model_fit.predict(start=len(train), end=len(train)+len(test)-1, dynamic=False)
   print(predictions)
-  return "woohoo"
+  return predictions
 
 if __name__ == '__main__':
     app.run(debug=True)
