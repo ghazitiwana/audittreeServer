@@ -24,6 +24,8 @@ def predict():
   predictions = model_fit.predict(start=len(train), end=len(train)+len(test)-1, dynamic=False)
   print(predictions)
 
-predict()
+def main():
+    predict()
 
-pip freeze > requirements.txt
+if __name__ == "__main__":
+    main()
