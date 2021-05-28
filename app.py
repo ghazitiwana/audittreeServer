@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
+    print("this is amazing")
     return 'hello'
 
 @app.route('/prediction', methods=['POST'])
