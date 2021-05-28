@@ -9,20 +9,20 @@ app = Flask(__name__)
 def home():
     return 'hello'
 
-@app.route('/prediction', methods=['POST'])
+@app.route('/prediction', methods=['GET'])
 def prediction():
   data = pd.read_csv('items.csv')
   dataT = data.T
   item1 = dataT.iloc[1:,1]
   # split dataset
-  #X = item1.values
-  #train, test = X[1:len(X)-7], X[len(X)-7:]
+  X = item1.values
+  train, test = X[1:len(X)-7], X[len(X)-7:]
   # train autoregression
-  #model = AutoReg(train, lags=14)
-  #model_fit = model.fit()
+  model = AutoReg(train, lags=14)
+  model_fit = model.fit()
   # make predictions
-  #predictions = model_fit.predict(start=len(train), end=len(train)+len(test)-1, dynamic=False)
-  #print(predictions)
+  predictions = model_fit.predict(start=len(train), end=len(train)+len(test)-1, dynamic=False)
+  print(predictions)
   return "woohoo"
 
 if __name__ == '__main__':
