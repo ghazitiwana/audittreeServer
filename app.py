@@ -2,11 +2,12 @@ from flask_restful import reqparse
 from flask import Flask, jsonify, request
 import pandas as pd
 from statsmodels.tsa.ar_model import AutoReg
+
 app = Flask(__name__)
 
-@app.route("/", methods=['GET'])
-def hello():
-    return "hey"
+@app.route('/')
+def home():
+    return render_template('index.html')
 
 @app.route('/prediction', methods=['POST'])
 def prediction():
