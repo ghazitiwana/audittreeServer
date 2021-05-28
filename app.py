@@ -10,7 +10,7 @@ def home():
     print("this is amazing")
     return 'hello'
 
-@app.route('/prediction', methods=['POST'])
+@app.route('/prediction', methods=['GET'])
 def prediction():
   data = pd.read_csv('items.csv')
   dataT = data.T
