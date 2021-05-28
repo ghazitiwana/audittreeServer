@@ -9,7 +9,7 @@ app = Flask(__name__)
 def home():
     return 'hello'
 
-@app.route('/prediction', methods=['GET'])
+@app.route('/prediction', methods=['POST'])
 def prediction():
   data = pd.read_csv('items.csv')
   dataT = data.T
@@ -23,7 +23,7 @@ def prediction():
   # make predictions
   predictions = model_fit.predict(start=len(train), end=len(train)+len(test)-1, dynamic=False)
   print(predictions)
-  return predictions
+  return jsonify({'prediction': str(predictions[0])})
 
 if __name__ == '__main__':
     app.run(debug=True)
