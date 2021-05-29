@@ -27,7 +27,7 @@ def prediction():
   # make predictions
   predictions = model_fit.predict(start=len(train), end=len(train)+len(test)-1, dynamic=False)
   print(predictions)
-  weekly = predictions.sum()
+  weekly = predictions.sum()//1
   print(weekly)
   return jsonify({'prediction': str(weekly)})
 
