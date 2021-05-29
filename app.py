@@ -10,8 +10,11 @@ def home():
     print("this is amazing")
     return 'hello'
 
-@app.route('/prediction', methods=['GET'])
+@app.route('/prediction', methods=['POST'])
 def prediction():
+  json = request.get_json()
+  name = list(json[0].values())
+  print(name)
   data = pd.read_csv('items.csv')
   dataT = data.T
   item1 = dataT.iloc[1:,1]
@@ -24,7 +27,7 @@ def prediction():
   # make predictions
   predictions = model_fit.predict(start=len(train), end=len(train)+len(test)-1, dynamic=False)
   print(predictions)
-  return jsonify({'prediction': str(predictions[0])})
+  return jsonify({'prediction': str(predictions)})
 
 if __name__ == '__main__':
     app.run(debug=True)
