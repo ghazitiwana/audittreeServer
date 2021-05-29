@@ -27,7 +27,9 @@ def prediction():
   # make predictions
   predictions = model_fit.predict(start=len(train), end=len(train)+len(test)-1, dynamic=False)
   print(predictions)
-  return jsonify({'prediction': str(predictions)})
+  weekly = predictions.sum()
+  print(weekly)
+  return jsonify({'prediction': str(weekly)})
 
 if __name__ == '__main__':
     app.run(debug=True)
