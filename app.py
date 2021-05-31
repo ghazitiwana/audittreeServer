@@ -29,7 +29,8 @@ def prediction():
     if itemnames[i] == var:
         found = i
         print("Found")
-  item1 = dataT.iloc[1:,i]
+        return
+  item1 = dataT.iloc[1:,found]
   # split dataset
   X = item1.values
   train, test = X[1:len(X)-7], X[len(X)-7:]
