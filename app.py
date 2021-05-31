@@ -25,8 +25,10 @@ def prediction():
     itemnames[i] = itemnames[i].replace("  ", " ")
     itemnames[i] = itemnames[i].replace("mm ", "mm")
     itemnames[i] = itemnames[i].replace("Inch ", "Inch")
+    print(itemnames[i])
     if itemnames[i] == var:
         found = i
+        print("Found")
   item1 = dataT.iloc[1:,i]
   # split dataset
   X = item1.values
