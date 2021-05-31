@@ -13,7 +13,7 @@ def home():
 @app.route('/prediction', methods=['POST'])
 def prediction():
   json = request.get_json()
-  name = list(json[0])
+  name = list(json[0].values())
   print(name)
   data = pd.read_csv('items.csv')
   dataT = data.T
