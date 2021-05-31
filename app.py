@@ -17,7 +17,17 @@ def prediction():
   print(name)
   data = pd.read_csv('items.csv')
   dataT = data.T
-  item1 = dataT.iloc[1:,1]
+  itemnames = dataT.iloc[0,0:]
+  var = name[0]
+  print(var)
+  found = 0
+  for i in range(len(itemnames)):
+    itemnames[i] = itemnames[i].replace("  ", " ")
+    itemnames[i] = itemnames[i].replace("mm ", "mm")
+    itemnames[i] = itemnames[i].replace("Inch ", "Inch")
+    if itemnames[i] == var:
+        found = i
+  item1 = dataT.iloc[1:,i]
   # split dataset
   X = item1.values
   train, test = X[1:len(X)-7], X[len(X)-7:]
